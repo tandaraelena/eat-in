@@ -2,6 +2,8 @@ import { collection, getDocs } from 'firebase/firestore/lite';
 import { db } from '../utils/init-firebase';
 import { useEffect, useState } from 'react';
 import { Card } from '../components/homepage/card';
+import { NavBar } from '../components/global/navigation';
+import { Banner } from '../components/global/banner';
 
 const HomePage = () => {
   const [data, setData] = useState<any>();
@@ -16,11 +18,8 @@ const HomePage = () => {
   console.log('data', data);
   return (
     <div>
-      <h1>Home page</h1>
-      <div style={{ color: 'green' }}>
-        <Card />
-      </div>
-      {/* <CategoriesList items={allCategories} /> */}
+      <NavBar />
+      <Banner />
     </div>
   );
 };

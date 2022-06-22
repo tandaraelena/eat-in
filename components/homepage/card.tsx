@@ -1,3 +1,15 @@
+import Image from 'next/image';
+import { FaArrowRight } from 'react-icons/fa';
+import { CardText, CardWrapper, Text } from './styles';
+
 export const Card = () => {
-  return <h1 style={{ color: 'red' }}>Text</h1>;
+  return (
+    <CardWrapper>
+      <Image src="/assets/starter.jpeg" objectFit="cover" width={200} height={200} />
+      <CardText>
+        <Text>Starters</Text>
+        <FaArrowRight style={{ width: '15px' }} />
+      </CardText>
+    </CardWrapper>
+  );
 };

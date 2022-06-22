@@ -28,7 +28,7 @@ export const BannerWrapper = styled.div`
   justify-content: center;
   width: 100%;
   height: auto;
-  /* position: relative; */
+  margin-bottom: 30px;
 `;
 
 export const Button = styled.button`

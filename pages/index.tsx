@@ -20,6 +20,9 @@ const HomePage = () => {
     <div>
       <NavBar />
       <Banner />
+      <div style={{ padding: '0 50px' }}>
+        <Card />
+      </div>
     </div>
   );
 };

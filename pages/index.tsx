@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { Card } from '../components/homepage/card';
 import { NavBar } from '../components/global/navigation';
 import { Banner } from '../components/global/banner';
+import { categories } from '../components/homepage/utils';
+import { StyledCards } from '../components/homepage/styles';
 
 const HomePage = () => {
   const [data, setData] = useState<any>();
@@ -15,14 +17,16 @@ const HomePage = () => {
       setData(dbList);
     })();
   }, []);
-  console.log('data', data);
+
   return (
     <div>
       <NavBar />
       <Banner />
-      <div style={{ padding: '0 50px' }}>
-        <Card />
-      </div>
+      <StyledCards>
+        {categories.map(({ title, src }) => (
+          <Card title={title} src={src} />
+        ))}
+      </StyledCards>
     </div>
   );
 };

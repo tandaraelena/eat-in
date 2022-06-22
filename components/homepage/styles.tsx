@@ -21,9 +21,17 @@ export const CardText = styled.div`
 
 export const Text = styled.div`
   margin-right: 10px;
-  transition: margin-right 0.6s ease-out;
+  transition: margin-right 0.4s ease-out;
 
   &:hover {
     margin-right: 20px;
   }
+`;
+
+export const StyledCards = styled.div`
+  padding: 0 30px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
 `;

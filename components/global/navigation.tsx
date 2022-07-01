@@ -1,6 +1,10 @@
 import { Wrapper, Actions, Button, Logo } from './styles';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+
 export const NavBar = () => {
+  const router = useRouter();
+
   return (
     <Wrapper>
       <Logo>
@@ -9,7 +13,9 @@ export const NavBar = () => {
       </Logo>
       <Actions>
         <Button>Login</Button>
-        <Button primary>Basket</Button>
+        <Button primary onClick={() => router.push('/basket')}>
+          Basket
+        </Button>
       </Actions>
     </Wrapper>
   );

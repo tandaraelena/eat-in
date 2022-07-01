@@ -1,6 +1,13 @@
 import React, { useContext, useReducer, useState } from 'react';
 import { shopReducer, ADD_PRODUCT, REMOVE_PRODUCT } from './reducer';
 
+const products = [
+  { id: 'p1', title: 'Gaming Mouse', price: 29.99, image: '/assets/desert.jpg' },
+  { id: 'p2', title: 'Harry Potter 3', price: 9.99, image: '/assets/drinks.jpg' },
+  { id: 'p3', title: 'Used plastic bottle', price: 0.99, image: '/assets/grill.jpg' },
+  { id: 'p4', title: 'Half-dried plant', price: 2.99, image: '/assets/soup.jpg' },
+];
+
 export interface BasketContextProps {
   products: Array<{ id: string; title: string; price: number; image: string }>;
   cart: Array<{ id: string; title: string; price: number; image: string }>;
@@ -9,12 +16,7 @@ export interface BasketContextProps {
 }
 
 const BasketContext = React.createContext<BasketContextProps>({
-  products: [
-    { id: 'p1', title: 'Gaming Mouse', price: 29.99, image: '/assets/desert.jpg' },
-    { id: 'p2', title: 'Harry Potter 3', price: 9.99, image: '/assets/drinks.jpg' },
-    { id: 'p3', title: 'Used plastic bottle', price: 0.99, image: '/assets/grill.jpg' },
-    { id: 'p4', title: 'Half-dried plant', price: 2.99, image: '/assets/soup.jpg' },
-  ],
+  products: products,
   cart: [],
   addProductToCart: () => {},
   removeProductFromCart: () => {},
@@ -25,12 +27,6 @@ interface BasketProviderProps {
 }
 
 const BasketProvider: React.FunctionComponent = ({ children }: BasketProviderProps) => {
-  const products = [
-    { id: 'p1', title: 'Gaming Mouse', price: 29.99, image: '/assets/desert.jpg' },
-    { id: 'p2', title: 'Harry Potter 3', price: 9.99, image: '/assets/drinks.jpg' },
-    { id: 'p3', title: 'Used plastic bottle', price: 0.99, image: '/assets/grill.jpg' },
-    { id: 'p4', title: 'Half-dried plant', price: 2.99, image: '/assets/soup.jpg' },
-  ];
   const [cartState, dispatch] = useReducer(shopReducer, { cart: [] });
 
   const addProductToCart = (product) => {

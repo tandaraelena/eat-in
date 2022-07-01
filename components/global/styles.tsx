@@ -31,7 +31,7 @@ export const BannerWrapper = styled.div`
   margin-bottom: 30px;
 `;
 
-export const Button = styled.button`
+export const Button = styled.button<{ link?: boolean | undefined; primary?: boolean | undefined }>`
   background: transparent;
   padding: 10px;
   margin: 0;
@@ -43,7 +43,14 @@ export const Button = styled.button`
 
   opacity: ${(props) => (props.disabled ? '0.7' : '1.0')};
 
-  ${({ primary }: { primary?: boolean | undefined }) =>
+  ${({ link }) =>
+    link &&
+    css`
+      border-radius: 2px;
+      border: 1px solid grey;
+    `}
+
+  ${({ primary }) =>
     primary &&
     css`
       border-radius: 2px;

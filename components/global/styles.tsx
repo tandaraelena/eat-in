@@ -58,3 +58,13 @@ export const Button = styled.button<{ link?: boolean | undefined; primary?: bool
       color: white;
     `}
 `;
+
+export const MenuWrapper = styled.div`
+  display: flex;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  font-size: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+`;

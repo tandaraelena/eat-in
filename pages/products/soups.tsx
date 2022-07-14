@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { MenuNavBar } from '../../components/global/menu-navigation';
 import { NavBar } from '../../components/global/navigation';
 
 const Soups = () => {
@@ -8,6 +9,7 @@ const Soups = () => {
   return (
     <div>
       <NavBar />
+      <MenuNavBar />
       soups
     </div>
   );

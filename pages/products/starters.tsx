@@ -41,13 +41,12 @@ const Starters = () => {
     <div>
       <NavBar />
       <MenuNavBar />
-      <Footer />
-
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '30px' }}>
         {cards.map(({ title, image, price, kcal }) => (
           <ProductCard title={title} image={image} price={price} kcal={kcal} />
         ))}
       </div>
+      <Footer />
     </div>
   );
 };

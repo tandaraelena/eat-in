@@ -68,3 +68,15 @@ export const MenuWrapper = styled.div`
   justify-content: center;
   flex-wrap: wrap;
 `;
+
+export const ScrollContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  scroll-behavior: smooth;
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;

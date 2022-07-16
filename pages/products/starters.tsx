@@ -5,6 +5,7 @@ import { NavBar } from '../../components/global/navigation';
 import { FaTimes } from 'react-icons/fa';
 import { useState } from 'react';
 import Image from 'next/image';
+import { ScrollContainer } from '../../components/global/styles';
 
 const cards = [
   {
@@ -135,7 +136,7 @@ const Starters = () => {
       | undefined;
   }>();
   const [tab, setTab] = useState<'nutrition' | 'contain' | 'dietary'>('dietary');
-  console.log('tab', tab);
+
   return (
     <div>
       <NavBar />
@@ -164,109 +165,134 @@ const Starters = () => {
           }}
         >
           <div style={{ display: 'flex', flexDirection: 'row-reverse', height: '100%' }}>
-            <div style={{ width: '50%', background: '#30395F', padding: '20px 30px', color: 'white' }}>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'row-reverse',
-                }}
-              >
-                <FaTimes style={{ width: '15px' }} onClick={() => setProduct(undefined)} />
-              </div>
-              <div
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  marginTop: '30px',
-                }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                  <div style={{ maxWidth: '300px' }}>
-                    <Image src={product.image} width={300} height={300} objectFit="cover" />
-                  </div>
-                </div>
-                <div
-                  style={{
-                    fontSize: '24px',
-                    marginTop: '20px',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  {product.title}
-                </div>
-                <div
-                  style={{
-                    fontSize: '20px',
-                    marginTop: '10px',
-                  }}
-                >
-                  {product.description}
-                </div>
-                <div
-                  style={{
-                    fontSize: '20px',
-                    marginTop: '30px',
-                    display: 'flex',
-                  }}
-                >
-                  {[
-                    { text: 'Dietary info', key: 'dietary' },
-                    { text: 'May contain', key: 'contain' },
-                    { text: 'Nutrition', key: 'nutrition' },
-                  ].map((itm: { text: string; key: 'nutrition' | 'contain' | 'dietary' }, index) => (
-                    <div
-                      key={itm.key}
-                      onClick={() => setTab(itm.key)}
-                      style={{
-                        cursor: 'pointer',
-                        padding: '10px',
-                        ...(itm.key === tab && {
-                          background: 'black',
-                          borderRadius: '5px',
-                        }),
-                        ...(index !== 2 && { marginRight: '10px' }),
-                        ...(index !== 2 && { paddingRight: '10px' }),
-                      }}
-                    >
-                      {itm.text}
+            <div
+              style={{
+                width: '50%',
+                background: '#30395F',
+                padding: '20px 30px',
+                color: 'white',
+              }}
+            >
+              <div style={{ position: 'relative', height: '100%' }}>
+                <ScrollContainer>
+                  <div
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      marginTop: '30px',
+                    }}
+                  >
+                    <div style={{ maxWidth: '300px' }}>
+                      <Image src={product.image} width={300} height={300} objectFit="cover" />
                     </div>
-                  ))}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '24px',
+                      marginTop: '20px',
+                      fontWeight: 'bold',
+                    }}
+                  >
+                    {product.title}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '20px',
+                      marginTop: '10px',
+                    }}
+                  >
+                    {product.description}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '20px',
+                      marginTop: '30px',
+                      display: 'flex',
+                    }}
+                  >
+                    {[
+                      { text: 'Dietary info', key: 'dietary' },
+                      { text: 'May contain', key: 'contain' },
+                      { text: 'Nutrition', key: 'nutrition' },
+                    ].map((itm: { text: string; key: 'nutrition' | 'contain' | 'dietary' }, index) => (
+                      <div
+                        key={itm.key}
+                        onClick={() => setTab(itm.key)}
+                        style={{
+                          cursor: 'pointer',
+                          padding: '10px',
+                          ...(itm.key === tab && {
+                            background: 'black',
+                            borderRadius: '5px',
+                          }),
+                          ...(index !== 2 && { marginRight: '10px' }),
+                          ...(index !== 2 && { paddingRight: '10px' }),
+                        }}
+                      >
+                        {itm.text}
+                      </div>
+                    ))}
+                  </div>
+                  <hr style={{ width: '100%', opacity: '0.6' }} />
+                  {tab === 'dietary' && (
+                    <div style={{ marginTop: '10px', fontSize: '18px' }}>
+                      <div style={{ marginBottom: '8px' }}>Energy: {product.dietary.energy}</div>
+                      <div style={{ marginBottom: '65px' }}>Allergens: {product.dietary.allergens}</div>
+                    </div>
+                  )}
+                  {tab === 'contain' && (
+                    <div style={{ marginTop: '10px', fontSize: '18px' }}>
+                      <div style={{ marginBottom: '65px' }}>{product.contain}</div>
+                    </div>
+                  )}
+                  {tab === 'nutrition' && (
+                    <div style={{ marginTop: '10px', fontSize: '18px' }}>
+                      <div style={{ marginBottom: '8px' }}>Energy: {product.nutrition.energy}</div>
+                      <div style={{ marginBottom: '8px' }}>Fat: {product.nutrition.fat}</div>
+                      <div style={{ marginBottom: '8px' }}>Protein: {product.nutrition.protein}</div>
+                      <div style={{ marginBottom: '8px' }}>Salt: {product.nutrition.salt}</div>
+                      <div style={{ marginBottom: '8px' }}>Carbohydrates: {product.nutrition.carbohydrates}</div>
+                      <div style={{ marginBottom: '65px' }}>Fibre: {product.nutrition.fibre}</div>
+                    </div>
+                  )}
+                </ScrollContainer>
+                <div
+                  style={{
+                    width: '100%',
+                    position: 'absolute',
+                    bottom: '0px',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    background: '#30395F',
+                  }}
+                >
+                  <button
+                    style={{
+                      fontSize: '18px',
+                      padding: '10px',
+                      borderRadius: '5px',
+                      border: 'none',
+                      background: 'red',
+                      color: 'white',
+                    }}
+                    onClick={() => setProduct(undefined)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    style={{
+                      color: 'white',
+                      background: 'green',
+                      fontSize: '18px',
+                      padding: '10px',
+                      borderRadius: '5px',
+                      border: 'none',
+                    }}
+                  >
+                    Add to order
+                  </button>
                 </div>
-                <hr style={{ width: '100%', opacity: '0.6' }} />
-                {tab === 'dietary' && (
-                  <div style={{ marginTop: '10px', fontSize: '18px' }}>
-                    <div style={{ marginBottom: '8px' }}>Energy: {product.dietary.energy}</div>
-                    <div>Allergens: {product.dietary.allergens}</div>
-                  </div>
-                )}
-                {tab === 'contain' && (
-                  <div style={{ marginTop: '10px', fontSize: '18px' }}>
-                    <div>{product.contain}</div>
-                  </div>
-                )}
-                {tab === 'nutrition' && (
-                  <div style={{ marginTop: '10px', fontSize: '18px' }}>
-                    <div style={{ marginBottom: '8px' }}>Energy: {product.nutrition.energy}</div>
-                    <div style={{ marginBottom: '8px' }}>Fat: {product.nutrition.fat}</div>
-                    <div style={{ marginBottom: '8px' }}>Protein: {product.nutrition.protein}</div>
-                    <div style={{ marginBottom: '8px' }}>Salt: {product.nutrition.salt}</div>
-                    <div style={{ marginBottom: '8px' }}>Carbohydrates: {product.nutrition.carbohydrates}</div>
-                    <div>Fibre: {product.nutrition.fibre}</div>
-                  </div>
-                )}
               </div>
-              <button
-                style={{
-                  marginTop: '30px',
-                  width: '100%',
-                  padding: '10px',
-                  fontSize: '20px',
-                  borderRadius: '5px',
-                  border: 'none',
-                }}
-              >
-                Add to order
-              </button>
             </div>
           </div>
         </div>

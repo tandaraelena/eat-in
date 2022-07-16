@@ -11,20 +11,22 @@ const cards = [
     title: 'Bruschetta',
     price: 6,
     kcal: '110 kcal',
-    description:
-      'Mixture of chopped tomatoes, balsamic, basil, and garlic, spooned over olive-oil brushed slices of rustic bread.',
-    dietary: {
-      energy: '666 kcal / 2787 kJ',
-      allergens: 'Soya, Gluten',
-    },
-    contain: 'Possible kitchen cross-contamination: Gluten (Rye)',
-    nutrition: {
-      energy: '666 kcal',
-      fat: '40.4g',
-      protein: '8.7g',
-      salt: '1.37g',
-      carbohydrates: '68.1g',
-      fibre: '3.3g',
+    details: {
+      description:
+        'Mixture of chopped tomatoes, balsamic, basil, and garlic, spooned over olive-oil brushed slices of rustic bread.',
+      dietary: {
+        energy: '666 kcal / 2787 kJ',
+        allergens: 'Soya, Gluten',
+      },
+      contain: 'Possible kitchen cross-contamination: Gluten (Rye)',
+      nutrition: {
+        energy: '666 kcal',
+        fat: '40.4g',
+        protein: '8.7g',
+        salt: '1.37g',
+        carbohydrates: '68.1g',
+        fibre: '3.3g',
+      },
     },
   },
   {
@@ -32,20 +34,22 @@ const cards = [
     title: 'Caprese salad',
     price: 9,
     kcal: '88 kcal',
-    description:
-      '“Insalata Caprese” - “the salad of Capri”, popular on Italian islands. Slices of fresh mozzarella cheese, tomatoes, and basil, then seasoned to perfection, drizzled with extra virgin olive oil.',
-    dietary: {
-      energy: '362 kcal / 1515 kJ',
-      allergens: 'Milk',
-    },
-    contain: 'Possible kitchen cross-contamination: Milk',
-    nutrition: {
-      energy: '362 kcal',
-      fat: '15.4g',
-      protein: '9.7g',
-      salt: '1.35g',
-      carbohydrates: '47.1g',
-      fibre: '5.3g',
+    details: {
+      description:
+        '“Insalata Caprese” - “the salad of Capri”, popular on Italian islands. Slices of fresh mozzarella cheese, tomatoes, and basil, then seasoned to perfection, drizzled with extra virgin olive oil.',
+      dietary: {
+        energy: '362 kcal / 1515 kJ',
+        allergens: 'Milk',
+      },
+      contain: 'Possible kitchen cross-contamination: Milk',
+      nutrition: {
+        energy: '362 kcal',
+        fat: '15.4g',
+        protein: '9.7g',
+        salt: '1.35g',
+        carbohydrates: '47.1g',
+        fibre: '5.3g',
+      },
     },
   },
   {
@@ -53,19 +57,21 @@ const cards = [
     title: 'Filled Eggs',
     price: 11,
     kcal: '123 kcal',
-    description: 'Single layer of eggs covered with a mix of tuna, Dijon mustard, green onions and a pinch of lemon.',
-    dietary: {
-      energy: '666 kcal / 2787 kJ',
-      allergens: 'Soya, Gluten',
-    },
-    contain: 'Possible kitchen cross-contamination: Gluten (Rye)',
-    nutrition: {
-      energy: '666 kcal',
-      fat: '40.4g',
-      protein: '8.7g',
-      salt: '1.37g',
-      carbohydrates: '68.1g',
-      fibre: '3.3g',
+    details: {
+      description: 'Single layer of eggs covered with a mix of tuna, Dijon mustard, green onions and a pinch of lemon.',
+      dietary: {
+        energy: '666 kcal / 2787 kJ',
+        allergens: 'Soya, Gluten',
+      },
+      contain: 'Possible kitchen cross-contamination: Gluten (Rye)',
+      nutrition: {
+        energy: '666 kcal',
+        fat: '40.4g',
+        protein: '8.7g',
+        salt: '1.37g',
+        carbohydrates: '68.1g',
+        fibre: '3.3g',
+      },
     },
   },
   {
@@ -73,19 +79,21 @@ const cards = [
     title: 'Omelette',
     price: 12,
     kcal: '133 kcal',
-    description: 'Fresh eggs smashed and seasoned with salad, avocado slices, persley and mushrooms',
-    dietary: {
-      energy: '362 kcal / 1515 kJ',
-      allergens: 'Ovalbumin, ovomucoid, ovotransferrin, lysozyme',
-    },
-    contain: 'Possible kitchen cross-contamination in egg white: ovalbumin, ovomucoid, ovotransferrin, lysozyme',
-    nutrition: {
-      energy: '362 kcal',
-      fat: '15.4g',
-      protein: '9.7g',
-      salt: '1.35g',
-      carbohydrates: '47.1g',
-      fibre: '5.3g',
+    details: {
+      description: 'Fresh eggs smashed and seasoned with salad, avocado slices, persley and mushrooms',
+      dietary: {
+        energy: '362 kcal / 1515 kJ',
+        allergens: 'Ovalbumin, ovomucoid, ovotransferrin, lysozyme',
+      },
+      contain: 'Possible kitchen cross-contamination in egg white: ovalbumin, ovomucoid, ovotransferrin, lysozyme',
+      nutrition: {
+        energy: '362 kcal',
+        fat: '15.4g',
+        protein: '9.7g',
+        salt: '1.35g',
+        carbohydrates: '47.1g',
+        fibre: '5.3g',
+      },
     },
   },
   {
@@ -93,57 +101,80 @@ const cards = [
     title: 'Spinach Rolls',
     price: 11,
     kcal: '133 kcal',
-    description: 'Colorful and delicious appetizer with a layer of smashed spinach mix, flour, yogurt and butter',
-    dietary: {
-      energy: '666 kcal / 2787 kJ',
-      allergens: 'Histamines, Gluten, Milk',
-    },
-    contain: 'Possible kitchen cross-contamination: Histamines, Gluten, Milk',
-    nutrition: {
-      energy: '666 kcal',
-      fat: '40.4g',
-      protein: '8.7g',
-      salt: '1.37g',
-      carbohydrates: '68.1g',
-      fibre: '3.3g',
+    details: {
+      description: 'Colorful and delicious appetizer with a layer of smashed spinach mix, flour, yogurt and butter',
+      dietary: {
+        energy: '666 kcal / 2787 kJ',
+        allergens: 'Histamines, Gluten, Milk',
+      },
+      contain: 'Possible kitchen cross-contamination: Histamines, Gluten, Milk',
+      nutrition: {
+        energy: '666 kcal',
+        fat: '40.4g',
+        protein: '8.7g',
+        salt: '1.37g',
+        carbohydrates: '68.1g',
+        fibre: '3.3g',
+      },
     },
   },
 ];
 
 const Starters = () => {
-  const [show, setShow] = useState(false);
+  const [product, setProduct] = useState<{
+    description: string;
+    dietary: {
+      energy: string;
+      allergens: string;
+    };
+    contain: string;
+    nutrition:
+      | {
+          energy: string;
+          fat: string;
+          protein: string;
+          salt: string;
+          carbohydrates: string;
+          fibre: string;
+        }
+      | undefined;
+  }>();
+
   return (
     <div>
       <NavBar />
       <MenuNavBar />
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '30px' }}>
-        {cards.map(({ title, image, price, kcal }) => (
-          <ProductCard title={title} image={image} price={price} kcal={kcal} />
+        {cards.map(({ title, image, price, kcal, details }) => (
+          <div onClick={() => setProduct(details)} key={title}>
+            <ProductCard title={title} image={image} price={price} kcal={kcal} />
+          </div>
         ))}
       </div>
-      <button onClick={() => setShow(true)} />
-      <div
-        style={{
-          backgroundColor: 'white',
-          position: 'fixed',
-          bottom: '0',
-          left: '0',
-          width: '100%',
-          height: '0px',
-          zIndex: '1000',
-          transition: 'height 0.4s ease-in',
-          ...(show && {
-            height: '100%',
-          }),
-        }}
-      >
+      {product && (
         <div
-          style={{ display: 'flex', flexDirection: 'row-reverse', padding: '20px 30px' }}
-          onClick={() => setShow(false)}
+          style={{
+            backgroundColor: 'white',
+            position: 'fixed',
+            bottom: '0',
+            left: '0',
+            width: '100%',
+            height: '0px',
+            zIndex: '1000',
+            transition: 'height 0.4s ease-in',
+            ...(product && {
+              height: '100%',
+            }),
+          }}
         >
-          <FaTimes style={{ width: '15px' }} />
+          <div
+            style={{ display: 'flex', flexDirection: 'row-reverse', padding: '20px 30px' }}
+            onClick={() => setProduct(undefined)}
+          >
+            <FaTimes style={{ width: '15px' }} />
+          </div>
         </div>
-      </div>
+      )}
       <Footer />
     </div>
   );

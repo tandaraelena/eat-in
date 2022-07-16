@@ -80,3 +80,13 @@ export const ScrollContainer = styled.div`
     display: none;
   }
 `;
+
+export const DrawerContent = styled.div`
+  width: 50%;
+  background: #30395f;
+  padding: 20px 30px;
+  color: white;
+  @media (max-width: 640px) {
+    width: 100%;
+  }
+`;

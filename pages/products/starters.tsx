@@ -5,7 +5,7 @@ import { NavBar } from '../../components/global/navigation';
 import { FaTimes } from 'react-icons/fa';
 import { useState } from 'react';
 import Image from 'next/image';
-import { ScrollContainer } from '../../components/global/styles';
+import { DrawerContent, ScrollContainer } from '../../components/global/styles';
 
 const cards = [
   {
@@ -165,14 +165,7 @@ const Starters = () => {
           }}
         >
           <div style={{ display: 'flex', flexDirection: 'row-reverse', height: '100%' }}>
-            <div
-              style={{
-                width: '50%',
-                background: '#30395F',
-                padding: '20px 30px',
-                color: 'white',
-              }}
-            >
+            <DrawerContent>
               <div style={{ position: 'relative', height: '100%' }}>
                 <ScrollContainer>
                   <div
@@ -225,8 +218,7 @@ const Starters = () => {
                             background: 'black',
                             borderRadius: '5px',
                           }),
-                          ...(index !== 2 && { marginRight: '10px' }),
-                          ...(index !== 2 && { paddingRight: '10px' }),
+                          ...(index !== 2 && { marginRight: '5px', paddingRight: '10px' }),
                         }}
                       >
                         {itm.text}
@@ -293,7 +285,7 @@ const Starters = () => {
                   </button>
                 </div>
               </div>
-            </div>
+            </DrawerContent>
           </div>
         </div>
       )}

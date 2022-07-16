@@ -74,7 +74,7 @@ const cards = [
     title: 'Omelette',
     price: 12,
     kcal: '133 kcal',
-    description: 'Fresh eggs smashed and seasoned with salad, avocado slices, persley and mushrooms',
+    description: 'Fresh eggs smashed and seasoned with salad, avocado slices, parsley and mushrooms',
     dietary: {
       energy: '362 kcal / 1515 kJ',
       allergens: 'Ovalbumin, ovomucoid, ovotransferrin, lysozyme',
@@ -134,7 +134,8 @@ const Starters = () => {
         }
       | undefined;
   }>();
-
+  const [tab, setTab] = useState<'nutrition' | 'contain' | 'dietary'>('dietary');
+  console.log('tab', tab);
   return (
     <div>
       <NavBar />
@@ -201,15 +202,71 @@ const Starters = () => {
                 >
                   {product.description}
                 </div>
-                {/* <div
+                <div
                   style={{
                     fontSize: '20px',
-                    marginTop: '10px',
+                    marginTop: '30px',
+                    display: 'flex',
                   }}
                 >
-                  <div></div>
-                </div> */}
+                  {[
+                    { text: 'Dietary info', key: 'dietary' },
+                    { text: 'May contain', key: 'contain' },
+                    { text: 'Nutrition', key: 'nutrition' },
+                  ].map((itm: { text: string; key: 'nutrition' | 'contain' | 'dietary' }, index) => (
+                    <div
+                      key={itm.key}
+                      onClick={() => setTab(itm.key)}
+                      style={{
+                        cursor: 'pointer',
+                        padding: '10px',
+                        ...(itm.key === tab && {
+                          background: 'black',
+                          borderRadius: '5px',
+                        }),
+                        ...(index !== 2 && { marginRight: '10px' }),
+                        ...(index !== 2 && { paddingRight: '10px' }),
+                      }}
+                    >
+                      {itm.text}
+                    </div>
+                  ))}
+                </div>
+                <hr style={{ width: '100%', opacity: '0.6' }} />
+                {tab === 'dietary' && (
+                  <div style={{ marginTop: '10px', fontSize: '18px' }}>
+                    <div style={{ marginBottom: '8px' }}>Energy: {product.dietary.energy}</div>
+                    <div>Allergens: {product.dietary.allergens}</div>
+                  </div>
+                )}
+                {tab === 'contain' && (
+                  <div style={{ marginTop: '10px', fontSize: '18px' }}>
+                    <div>{product.contain}</div>
+                  </div>
+                )}
+                {tab === 'nutrition' && (
+                  <div style={{ marginTop: '10px', fontSize: '18px' }}>
+                    <div style={{ marginBottom: '8px' }}>Energy: {product.nutrition.energy}</div>
+                    <div style={{ marginBottom: '8px' }}>Fat: {product.nutrition.fat}</div>
+                    <div style={{ marginBottom: '8px' }}>Protein: {product.nutrition.protein}</div>
+                    <div style={{ marginBottom: '8px' }}>Salt: {product.nutrition.salt}</div>
+                    <div style={{ marginBottom: '8px' }}>Carbohydrates: {product.nutrition.carbohydrates}</div>
+                    <div>Fibre: {product.nutrition.fibre}</div>
+                  </div>
+                )}
               </div>
+              <button
+                style={{
+                  marginTop: '30px',
+                  width: '100%',
+                  padding: '10px',
+                  fontSize: '20px',
+                  borderRadius: '5px',
+                  border: 'none',
+                }}
+              >
+                Add to order
+              </button>
             </div>
           </div>
         </div>

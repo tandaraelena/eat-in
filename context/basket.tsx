@@ -1,5 +1,5 @@
 import React, { useContext, useReducer } from 'react';
-import { shopReducer, ADD_PRODUCT, REMOVE_PRODUCT } from './reducer';
+import { shopReducer, ADD_PRODUCT, REMOVE_PRODUCT, REMOVE_PRODUCTS } from './reducer';
 import { products } from './utils';
 
 export interface Product {
@@ -30,6 +30,7 @@ export interface BasketContextProps {
   cart: Array<Product>;
   addProductToCart: (product: Product) => void;
   removeProductFromCart: (productId: string) => void;
+  removeProductsFromCart: () => void;
 }
 
 const BasketContext = React.createContext<BasketContextProps>({
@@ -37,6 +38,7 @@ const BasketContext = React.createContext<BasketContextProps>({
   cart: [],
   addProductToCart: () => {},
   removeProductFromCart: () => {},
+  removeProductsFromCart: () => {},
 });
 
 interface BasketProviderProps {
@@ -58,6 +60,12 @@ const BasketProvider: React.FunctionComponent = ({ children }: BasketProviderPro
     }, 100);
   };
 
+  const removeProductsFromCart = () => {
+    setTimeout(() => {
+      dispatch({ type: REMOVE_PRODUCTS });
+    }, 100);
+  };
+
   return (
     <BasketContext.Provider
       value={{
@@ -65,6 +73,7 @@ const BasketProvider: React.FunctionComponent = ({ children }: BasketProviderPro
         cart: cartState.cart,
         addProductToCart,
         removeProductFromCart,
+        removeProductsFromCart
       }}
     >
       {children}

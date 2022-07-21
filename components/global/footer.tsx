@@ -1,8 +1,11 @@
 import { useRouter } from 'next/router';
+import { useBasketContext } from '../../context/basket';
 import { Button } from './styles';
 
 export const Footer = () => {
   const router = useRouter();
+  const context = useBasketContext();
+
   return (
     <div style={{ height: '77px' }}>
       <div
@@ -17,7 +20,7 @@ export const Footer = () => {
           padding: '20px',
         }}
       >
-        <Button link>Cancel order</Button>
+        <Button link onClick={() => context.removeProductsFromCart()}>Cancel order</Button>
         <Button primary onClick={() => router.push('/basket')}>
           View order
         </Button>

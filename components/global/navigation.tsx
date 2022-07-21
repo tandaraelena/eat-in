@@ -12,7 +12,6 @@ export const NavBar = () => {
         <div>RF - Eat-in</div>
       </Logo>
       <Actions>
-        <Button>Login</Button>
         <Button primary onClick={() => router.push('/basket')}>
           Basket
         </Button>

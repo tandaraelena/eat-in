@@ -19,6 +19,9 @@ import {
 const Basket = () => {
   const router = useRouter();
   const context = useBasketContext();
+  const total = context.cart.reduce((prev,curr) => {
+    return prev + (curr.quantity * curr.price)
+  }, 0)
 
   return (
     <div>
@@ -41,13 +44,16 @@ const Basket = () => {
               <BasketItem>
                 <ItemInfo>
                   <Image src={itm.image} width={100} height={100} />
+                  <div>
                   <ItemTitle>{itm.title} ({itm.quantity})</ItemTitle>
+                  <div style={{marginLeft: '20px'}}>{itm.description}</div>
+                  </div>
                 </ItemInfo>
-                <div>{itm.price}</div>
+                <div style={{marginLeft: '20px'}}>{itm.price}</div>
               </BasketItem>
               <ItemActions>
-                <FaPlusCircle size="20px" color="green" />
-                <FaTrashAlt size="20px" color="red" style={{ marginRight: '20px' }} />
+                <FaPlusCircle size="20px" color="green" onClick={() => context.addProductToCart(itm)}/>
+                <FaTrashAlt size="20px" color="red" style={{ marginRight: '20px' }} onClick={() => context.removeProductFromCart(itm.id)}/>
               </ItemActions>
               <ItemHr />
             </BasketItemWrapper>
@@ -55,7 +61,7 @@ const Basket = () => {
           {context.cart.length !== 0 && (
           <BasketFooter>
             <span>Total:</span>
-            <span>total price</span>
+            <span>£{total}</span>
           </BasketFooter>
           )}
         </ItemsWrapper>

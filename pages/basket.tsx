@@ -34,8 +34,10 @@ const Basket = () => {
       </BasketHeader>
       <BasketContainer>
         <ItemsWrapper>
-          {context.cart.map((itm) => (
-            <BasketItemWrapper>
+          {context.cart.length === 0 ? 
+          <div>The basket is empty. Please add products.</div>
+          : context.cart.map((itm) => (
+            <BasketItemWrapper key={itm.id}>
               <BasketItem>
                 <ItemInfo>
                   <Image src={itm.image} width={100} height={100} />
@@ -50,10 +52,12 @@ const Basket = () => {
               <ItemHr />
             </BasketItemWrapper>
           ))}
+          {context.cart.length !== 0 && (
           <BasketFooter>
             <span>Total:</span>
             <span>total price</span>
           </BasketFooter>
+          )}
         </ItemsWrapper>
       </BasketContainer>
     </div>

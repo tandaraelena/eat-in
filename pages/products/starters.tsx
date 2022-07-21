@@ -5,7 +5,8 @@ import { NavBar } from '../../components/global/navigation';
 import { useState } from 'react';
 import Image from 'next/image';
 import { DrawerContent, ScrollContainer } from '../../components/global/styles';
-import { useBasketContext, products, Product } from '../../context/basket';
+import { useBasketContext, Product } from '../../context/basket';
+import { products } from '../../context/utils';
 
 const Starters = () => {
   const context = useBasketContext();

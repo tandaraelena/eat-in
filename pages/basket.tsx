@@ -34,12 +34,12 @@ const Basket = () => {
       </BasketHeader>
       <BasketContainer>
         <ItemsWrapper>
-          {context.products.map((itm) => (
+          {context.cart.map((itm) => (
             <BasketItemWrapper>
               <BasketItem>
                 <ItemInfo>
                   <Image src={itm.image} width={100} height={100} />
-                  <ItemTitle>{itm.title}</ItemTitle>
+                  <ItemTitle>{itm.title} ({itm.quantity})</ItemTitle>
                 </ItemInfo>
                 <div>{itm.price}</div>
               </BasketItem>

@@ -264,4 +264,48 @@ export const products = [
       fibre: "3.3g",
     },
   },
+  {
+    id: "dessert-donut",
+    image: "/assets/donut.jpg",
+    title: "Chesse donuts",
+    price: 15,
+    kcal: "503 kcal",
+    description:
+      "Portion of two Romanian cheese donuts served with sour cream and sweet straberry topping",
+    dietary: {
+      energy: "303 kcal / 3707 kJ",
+      allergens: "Gluten",
+    },
+    contain: "Possible kitchen cross-contamination: gluten",
+    nutrition: {
+      energy: "303 kcal",
+      fat: "40.4g",
+      protein: "8.7g",
+      salt: "1.37g",
+      carbohydrates: "68.1g",
+      fibre: "3.3g",
+    },
+  },
+  {
+    id: "dessert-crepes",
+    image: "/assets/crepes.jpg",
+    title: "Crepes",
+    price: 12,
+    kcal: "503 kcal",
+    description:
+      "Crepes filled in with whipped cream and strawberries and drizzled with chocolate topping.",
+    dietary: {
+      energy: "503 kcal / 3707 kJ",
+      allergens: "Gluten",
+    },
+    contain: "Possible kitchen cross-contamination: gluten",
+    nutrition: {
+      energy: "503 kcal",
+      fat: "40.4g",
+      protein: "8.7g",
+      salt: "1.37g",
+      carbohydrates: "68.1g",
+      fibre: "3.3g",
+    },
+  },
 ];

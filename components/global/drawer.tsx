@@ -23,9 +23,11 @@ import { Product, useBasketContext } from "../../context/basket";
 export const Drawer = ({
   product,
   cancel,
+  beverage,
 }: {
   product: Product;
   cancel: () => void;
+  beverage?: boolean;
 }) => {
   const context = useBasketContext();
   const [tab, setTab] = useState<"nutrition" | "contain" | "dietary">(
@@ -59,68 +61,80 @@ export const Drawer = ({
                 </ImageContainer>
               </ImageWrapper>
               <RecipeTitle>{product.title}</RecipeTitle>
-              <RecipeDescription>{product.description}</RecipeDescription>
-              <HeaderTabs>
-                {[
-                  { text: "Dietary info", key: "dietary" },
-                  { text: "May contain", key: "contain" },
-                  { text: "Nutrition", key: "nutrition" },
-                ].map(
-                  (
-                    itm: {
-                      text: string;
-                      key: "nutrition" | "contain" | "dietary";
-                    },
-                    index
-                  ) => (
-                    <div
-                      key={itm.key}
-                      onClick={() => setTab(itm.key)}
-                      style={{
-                        cursor: "pointer",
-                        padding: "10px",
-                        ...(itm.key === tab && {
-                          background: "black",
-                          borderRadius: "5px",
-                        }),
-                        ...(index !== 2 && {
-                          marginRight: "5px",
-                          paddingRight: "10px",
-                        }),
-                      }}
-                    >
-                      {itm.text}
-                    </div>
-                  )
-                )}
-              </HeaderTabs>
-              <HR />
-              {tab === "dietary" && (
-                <Tab>
-                  <SmallBottom>Energy: {product.dietary.energy}</SmallBottom>
-                  <LargeBottom>
-                    Allergens: {product.dietary.allergens}
-                  </LargeBottom>
-                </Tab>
-              )}
-              {tab === "contain" && (
-                <Tab>
-                  <LargeBottom>{product.contain}</LargeBottom>
-                </Tab>
-              )}
-              {tab === "nutrition" && (
-                <Tab>
-                  <SmallBottom>Energy: {product.nutrition.energy}</SmallBottom>
-                  <SmallBottom>Fat: {product.nutrition.fat}</SmallBottom>
-                  <SmallBottom>
-                    Protein: {product.nutrition.protein}
-                  </SmallBottom>
-                  <SmallBottom>Salt: {product.nutrition.salt}</SmallBottom>
-                  <SmallBottom>
-                    Carbohydrates: {product.nutrition.carbohydrates}
-                  </SmallBottom>
-                  <LargeBottom>Fibre: {product.nutrition.fibre}</LargeBottom>
-                </Tab>
+              {beverage ? (
+                <div></div>
+              ) : (
+                <>
+                  <RecipeDescription>{product.description}</RecipeDescription>
+                  <HeaderTabs>
+                    {[
+                      { text: "Dietary info", key: "dietary" },
+                      { text: "May contain", key: "contain" },
+                      { text: "Nutrition", key: "nutrition" },
+                    ].map(
+                      (
+                        itm: {
+                          text: string;
+                          key: "nutrition" | "contain" | "dietary";
+                        },
+                        index
+                      ) => (
+                        <div
+                          key={itm.key}
+                          onClick={() => setTab(itm.key)}
+                          style={{
+                            cursor: "pointer",
+                            padding: "10px",
+                            ...(itm.key === tab && {
+                              background: "black",
+                              borderRadius: "5px",
+                            }),
+                            ...(index !== 2 && {
+                              marginRight: "5px",
+                              paddingRight: "10px",
+                            }),
+                          }}
+                        >
+                          {itm.text}
+                        </div>
+                      )
+                    )}
+                  </HeaderTabs>
+                  <HR />
+                  {tab === "dietary" && (
+                    <Tab>
+                      <SmallBottom>
+                        Energy: {product.dietary.energy}
+                      </SmallBottom>
+                      <LargeBottom>
+                        Allergens: {product.dietary.allergens}
+                      </LargeBottom>
+                    </Tab>
+                  )}
+                  {tab === "contain" && (
+                    <Tab>
+                      <LargeBottom>{product.contain}</LargeBottom>
+                    </Tab>
+                  )}
+                  {tab === "nutrition" && (
+                    <Tab>
+                      <SmallBottom>
+                        Energy: {product.nutrition.energy}
+                      </SmallBottom>
+                      <SmallBottom>Fat: {product.nutrition.fat}</SmallBottom>
+                      <SmallBottom>
+                        Protein: {product.nutrition.protein}
+                      </SmallBottom>
+                      <SmallBottom>Salt: {product.nutrition.salt}</SmallBottom>
+                      <SmallBottom>
+                        Carbohydrates: {product.nutrition.carbohydrates}
+                      </SmallBottom>
+                      <LargeBottom>
+                        Fibre: {product.nutrition.fibre}
+                      </LargeBottom>
+                    </Tab>
+                  )}
+                </>
               )}
             </ScrollContainer>
             <ButtonsWrapper>

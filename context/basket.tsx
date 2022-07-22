@@ -1,6 +1,11 @@
-import React, { useContext, useReducer } from 'react';
-import { shopReducer, ADD_PRODUCT, REMOVE_PRODUCT, REMOVE_PRODUCTS } from './reducer';
-import { products } from './utils';
+import React, { useContext, useReducer } from "react";
+import {
+  shopReducer,
+  ADD_PRODUCT,
+  REMOVE_PRODUCT,
+  REMOVE_PRODUCTS,
+} from "./reducer";
+import { products } from "./utils";
 
 export interface Product {
   id: string;
@@ -8,20 +13,22 @@ export interface Product {
   title: string;
   price: number;
   kcal: string;
-  description: string;
-  dietary: {
-      energy: string;
-      allergens: string;
+  description?: string;
+  dietary?: {
+    energy: string;
+    allergens: string;
   };
-  contain: string;
-  nutrition: {
-      energy: string;
-      fat: string;
-      protein: string;
-      salt: string;
-      carbohydrates: string;
-      fibre: string;
-  } | undefined;
+  contain?: string;
+  nutrition?:
+    | {
+        energy: string;
+        fat: string;
+        protein: string;
+        salt: string;
+        carbohydrates: string;
+        fibre: string;
+      }
+    | undefined;
   quantity?: number;
 }
 
@@ -45,7 +52,9 @@ interface BasketProviderProps {
   children?: React.ReactNode;
 }
 
-const BasketProvider: React.FunctionComponent = ({ children }: BasketProviderProps) => {
+const BasketProvider: React.FunctionComponent = ({
+  children,
+}: BasketProviderProps) => {
   const [cartState, dispatch] = useReducer(shopReducer, { cart: [] });
 
   const addProductToCart = (product) => {
@@ -73,7 +82,7 @@ const BasketProvider: React.FunctionComponent = ({ children }: BasketProviderPro
         cart: cartState.cart,
         addProductToCart,
         removeProductFromCart,
-        removeProductsFromCart
+        removeProductsFromCart,
       }}
     >
       {children}

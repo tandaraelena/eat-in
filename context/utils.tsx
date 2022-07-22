@@ -308,4 +308,32 @@ export const products = [
       fibre: "3.3g",
     },
   },
+  {
+    id: "beverage-orange",
+    image: "/assets/orange.jpg",
+    title: "Orange fresh",
+    price: 5,
+    kcal: "48 kcal",
+  },
+  {
+    id: "beverage-grapefruit",
+    image: "/assets/grapefruit.jpg",
+    title: "Grapefruit fresh",
+    price: 5,
+    kcal: "68 kcal",
+  },
+  {
+    id: "beverage-kiwi",
+    image: "/assets/kiwi.jpg",
+    title: "Kiwi fresh",
+    price: 5,
+    kcal: "58 kcal",
+  },
+  {
+    id: "beverage-pomegranate",
+    image: "/assets/pomegranate.jpg",
+    title: "Pomegranate fresh",
+    price: 5,
+    kcal: "48 kcal",
+  },
 ];

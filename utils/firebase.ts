@@ -1,15 +1,11 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
   sendPasswordResetEmail,
   signOut,
 } from "firebase/auth";
 import {
   getFirestore,
-  collection,
-  addDoc,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -24,22 +20,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
-
-const registerWithEmailAndPassword = async (name, email, password) => {
-  try {
-    const res = await createUserWithEmailAndPassword(auth, email, password);
-    const user = res.user;
-    await addDoc(collection(db, "users"), {
-      uid: user.uid,
-      name,
-      authProvider: "local",
-      email,
-    });
-  } catch (err) {
-    console.error(err);
-    alert(err.message);
-  }
-};
 
 const sendPasswordReset = async (email) => {
   try {
@@ -59,7 +39,6 @@ const logout = () => {
 export {
   auth,
   db,
-  registerWithEmailAndPassword,
   sendPasswordReset,
   logout,
 };

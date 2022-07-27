@@ -20,7 +20,6 @@ export const NavBar = () => {
       </div>
     );
 
-  console.log("user", user);
   return (
     <Wrapper>
       <Logo onClick={() => router.push("/")}>

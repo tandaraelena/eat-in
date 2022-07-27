@@ -14,7 +14,7 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [error, setError] = useState("");
+  const [error, setError] = useState(undefined);
 
   useEffect(() => {
     if (loading) return;

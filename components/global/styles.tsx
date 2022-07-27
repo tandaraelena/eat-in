@@ -31,6 +31,21 @@ export const BannerWrapper = styled.div`
   margin-bottom: 30px;
 `;
 
+export const ButtonWithColor = styled.button<{
+  color?: string;
+}>`
+  padding: 10px;
+  margin: 0;
+  border: none;
+  color: white;
+  border-radius: 2px;
+  &:hover {
+    opacity: ${(props) => (props.disabled ? "0.7" : "0.8")};
+  }
+  opacity: ${(props) => (props.disabled ? "0.7" : "1.0")};
+  background: ${({ color }) => (color ? color : "black")};
+`;
+
 export const Button = styled.button<{
   link?: boolean | undefined;
   primary?: boolean | undefined;
@@ -39,6 +54,7 @@ export const Button = styled.button<{
   padding: 10px;
   margin: 0;
   border: none;
+  font-size: 18px;
 
   &:hover {
     opacity: ${(props) => (props.disabled ? "0.7" : "0.8")};

@@ -20,9 +20,11 @@ import {
   BasketFooter,
 } from "../components/basket/styles";
 import { Button } from "../components/global/styles";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { auth } from "../utils/firebase";
+import { auth, db } from "../utils/firebase";
+import { addDoc, collection } from "firebase/firestore";
+import Link from "next/link";
 
 const Basket = () => {
   const router = useRouter();
@@ -31,11 +33,31 @@ const Basket = () => {
     return prev + curr.quantity * curr.price;
   }, 0);
   const [user, loading] = useAuthState(auth);
+  const [error, setError] = useState(undefined);
+  const [success, setSuccess] = useState(undefined);
 
   useEffect(() => {
     if (loading) return;
     if (!user) router.push("/login");
   }, [user, loading]);
+
+  const placeOrder = async () => {
+    try {
+      setError(undefined);
+      const res = await addDoc(collection(db, "orders"), {
+        user: user.email,
+        order: {
+          ...context.cart,
+        },
+        timestamp: Date.now(),
+      });
+      if (res) setSuccess(true);
+    } catch {
+      setError(
+        "We couldn't satisfy your request this time. Please try again later"
+      );
+    }
+  };
 
   return (
     <div>
@@ -103,8 +125,25 @@ const Basket = () => {
                 <Button link onClick={() => context.removeProductsFromCart()}>
                   Cancel order
                 </Button>
-                <Button primary>Place order</Button>
+                <Button primary onClick={placeOrder} disabled={success}>
+                  Place order
+                </Button>
               </div>
+              {error && (
+                <div
+                  style={{ color: "red", fontSize: "16px", marginTop: "5px" }}
+                >
+                  {error}
+                </div>
+              )}
+              {success && (
+                <div
+                  style={{ color: "green", fontSize: "16px", marginTop: "5px" }}
+                >
+                  Your order has been placed successfully. You can view it in{" "}
+                  <Link href="/orders">my orders</Link> page.
+                </div>
+              )}
             </div>
           )}
         </ItemsWrapper>

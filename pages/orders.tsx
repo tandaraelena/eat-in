@@ -26,7 +26,7 @@ const Orders = () => {
       })();
     }
     if (!user) router.push("/login");
-  }, [user, loading]);
+  }, [user]);
 
   const transformDate = (timestamp) => {
     const date = new Date(timestamp);
@@ -53,11 +53,19 @@ const Orders = () => {
         <BasketText>My orders</BasketText>
       </BasketHeader>
       <div
-        style={{ padding: "30px", display: "flex", justifyContent: "center" }}
+        style={{
+          padding: "30px",
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+        }}
       >
         {Array.isArray(data) &&
           data.map((order) => (
-            <div style={{ borderRadius: "4px" }} key={order.user}>
+            <div
+              style={{ marginTop: "20px" }}
+              key={`${order.timestamp}-${order.email}`}
+            >
               <div
                 style={{
                   background: "green",
@@ -86,7 +94,7 @@ const Orders = () => {
                       <Image src={itm.image} width={70} height={70} />
                       <div style={{ marginLeft: "20px" }}>
                         <div style={{ marginBottom: "10px", fontSize: "18px" }}>
-                          {itm.title}
+                          {itm.title} ({itm.quantity})
                         </div>
                         <div>{itm.description}</div>
                       </div>

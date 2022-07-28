@@ -19,6 +19,10 @@ import {
   ItemHr,
   BasketFooter,
 } from "../components/basket/styles";
+import { Button } from "../components/global/styles";
+import { useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../utils/firebase";
 
 const Basket = () => {
   const router = useRouter();
@@ -26,6 +30,12 @@ const Basket = () => {
   const total = context.cart.reduce((prev, curr) => {
     return prev + curr.quantity * curr.price;
   }, 0);
+  const [user, loading] = useAuthState(auth);
+
+  useEffect(() => {
+    if (loading) return;
+    if (!user) router.push("/login");
+  }, [user, loading]);
 
   return (
     <div>
@@ -78,10 +88,24 @@ const Basket = () => {
             ))
           )}
           {context.cart.length !== 0 && (
-            <BasketFooter>
-              <span>Total:</span>
-              <span>£{total}</span>
-            </BasketFooter>
+            <div>
+              <BasketFooter>
+                <span>Total:</span>
+                <span>£{total}</span>
+              </BasketFooter>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  marginTop: "10px",
+                }}
+              >
+                <Button link onClick={() => context.removeProductsFromCart()}>
+                  Cancel order
+                </Button>
+                <Button primary>Place order</Button>
+              </div>
+            </div>
           )}
         </ItemsWrapper>
       </BasketContainer>

@@ -46,9 +46,7 @@ const Basket = () => {
       setError(undefined);
       const res = await addDoc(collection(db, "orders"), {
         user: user.email,
-        order: {
-          ...context.cart,
-        },
+        cart: [...context.cart],
         timestamp: Date.now(),
       });
       if (res) setSuccess(true);

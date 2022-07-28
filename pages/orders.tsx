@@ -56,14 +56,26 @@ const Orders = () => {
         style={{
           padding: "30px",
           display: "flex",
-          justifyContent: "center",
           flexDirection: "column",
+          alignItems: "center",
         }}
       >
+        {data && data.length === 0 && (
+          <div
+            style={{
+              backgroundColor: "white",
+              borderRadius: "2px",
+              padding: "20px",
+              width: "800px",
+            }}
+          >
+            You don't have any orders yet.
+          </div>
+        )}
         {Array.isArray(data) &&
           data.map((order) => (
             <div
-              style={{ marginTop: "20px" }}
+              style={{ marginTop: "20px", maxWidth: "700px" }}
               key={`${order.timestamp}-${order.email}`}
             >
               <div

@@ -1,9 +1,9 @@
-import '../styles.css';
-import { BasketProvider } from '../context/basket';
+import "../styles.css";
+import { BasketProvider } from "../context/basket";
 export default function MyApp({ Component, pageProps }) {
   return (
     <BasketProvider>
-      <Component {...pageProps} />{' '}
+      <Component {...pageProps} />{" "}
     </BasketProvider>
   );
 }

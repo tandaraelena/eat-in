@@ -1,24 +1,18 @@
-# Eat-in website - disertation project
+# :scroll: Eat-in website - disertation project 
 
-This is an mvp eat-in website used for a Romanian restaurant.
+:hibiscus: This website is an mvp version for _RF - Eat-in_ website. The website represents a digital system for a Romanian restaurant.
 
-## Deploy your own
+## :student: How to use it
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-typescript)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-typescript&project-name=with-typescript&repository-name=with-typescript)
-
-## How to use it?
-
-To have access to the code you can dirrectly download the ZIP or ,if you have git installed, clone the repo with the following comand:
+1. To have access to the code you can dirrectly download the ZIP folder or ,if you have git installed, clone the repository with the following comand:
 ```git clone https://github.com/tandaraelena/eat-in.git```
 
-Change directory:
+2. Change directory:
 ```cd eat-in```
 
-Inside the **eat-in** directory install the packages by running:
-```yarn```
+3. Install the packages by running:
+```yarn```. Same - if you don't have yarn you'll need to install it.  More information [here](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable).
 
-Run `next dev` to start the server.
+4. Run `next dev` to start the server.
 
-Have fun!
+5. (Optional) Run `yarn test` to get a list of green tests passing. :shamrock:

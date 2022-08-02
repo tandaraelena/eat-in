@@ -17,7 +17,7 @@ import {
   ScrollContainer,
   SmallBottom,
   Tab,
-} from "../../components/global/styles";
+} from "./styles";
 import { Product, useBasketContext } from "../../context/basket";
 
 export const Drawer = ({
